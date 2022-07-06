@@ -9,6 +9,7 @@
     'depends': [
         'stock',
         'product',
+        'l10n_mx_edi',
     ],
     'data': [
         'security/ir.model.access.csv',
