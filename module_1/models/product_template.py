@@ -42,11 +42,14 @@ class ProductTemplate(models.Model):
                 else:
                     rec.suc_tuxpan = rec.suc_tuxpan
 
-    suc_manantial = fields.Float(string="Suc. Manantial", compute=_get_location_products, default=0)
-    suc_magon = fields.Float(string="Suc. Magon", compute=_get_location_products, default=0)
-    suc_poza_rica = fields.Float(string="Suc. Poza Rica", compute=_get_location_products, default=0)
-    suc_papantla = fields.Float(string="Suc. Papantla", compute=_get_location_products, default=0)
-    suc_tuxpan = fields.Float(string="Suc. Tuxpan", compute=_get_location_products, default=0)
+    suc_manantial = fields.Float(string="Suc. Manantial", compute=_get_location_products, default=0, store=True)
+    suc_magon = fields.Float(string="Suc. Magon", compute=_get_location_products, default=0, store=True)
+    suc_poza_rica = fields.Float(string="Suc. Poza Rica", compute=_get_location_products, default=0, store=True)
+    suc_papantla = fields.Float(string="Suc. Papantla", compute=_get_location_products, default=0, store=True)
+    suc_tuxpan = fields.Float(string="Suc. Tuxpan", compute=_get_location_products, default=0, store=True)
+
+    sales_count = fields.Float(store=True)
+    qty_available = fields.Float(store=True)
 
 # class StockQuant(models.Model):
 #     _inherit = 'stock.quant'
