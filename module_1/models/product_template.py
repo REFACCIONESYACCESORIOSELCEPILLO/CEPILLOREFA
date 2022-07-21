@@ -42,6 +42,14 @@ class ProductTemplate(models.Model):
                 else:
                     rec.suc_tuxpan = rec.suc_tuxpan
 
+    @api.depends('sales_count')
+    def _get_team_ids(self):
+        team_id = False
+        for team in self.env['sale.report'].search([('product_id.id','=',self.id)]):
+            team_id += team.team_id
+        self.team_id = team_id
+
+
     suc_manantial = fields.Float(string="Suc. Manantial", compute=_get_location_products, default=0, store=True)
     suc_magon = fields.Float(string="Suc. Magon", compute=_get_location_products, default=0, store=True)
     suc_poza_rica = fields.Float(string="Suc. Poza Rica", compute=_get_location_products, default=0, store=True)
@@ -51,34 +59,5 @@ class ProductTemplate(models.Model):
     sales_count = fields.Float(store=True)
     qty_available = fields.Float(store=True)
 
-# class StockQuant(models.Model):
-#     _inherit = 'stock.quant'
-
-#     def write(self, vals):
-#         res = super(StockQuant, self).write(vals)
-#         if 'quantity' in vals:
-#             for product in self.product_id:
-#                 if self.location_id.branch == 'MAN':
-#                     print("################# MAN >>>>>>>>>>>>>>>>>>>>>< ", vals['quantity'])
-#                     product.suc_manantial += vals['quantity']
-#                 else:
-#                     product.suc_manantial = product.suc_manantial
-#                 if self.location_id.branch == 'MAG':
-#                     product.suc_magon += vals['quantity']
-#                 else:
-#                     product.suc_magon = product.suc_magon
-#                 if self.location_id.branch == 'POZ':
-#                     print("################# POZ >>>>>>>>>>>>>>>>>>>>>< ", vals['quantity'])
-#                     product.suc_poza_rica += vals['quantity']
-#                 else:
-#                     product.suc_poza_rica = product.suc_poza_rica
-#                 if self.location_id.branch == 'PAP':
-#                     product.suc_papantla += vals['quantity']
-#                 else:
-#                     product.suc_papantla = product.suc_papantla
-#                 if self.location_id.branch == 'TUX':
-#                     product.suc_tuxpan += vals['quantity']
-#                 else:
-#                     product.suc_tuxpan = product.suc_tuxpan
-#         return res
+    team_id = fields.Many2many('crm.team', string="Equipo de ventas", compute=_get_team_ids)
 
