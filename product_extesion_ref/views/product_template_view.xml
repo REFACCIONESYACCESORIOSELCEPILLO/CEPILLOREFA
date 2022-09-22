@@ -82,16 +82,16 @@
         parent="stock.menu_product_in_config_stock"
         sequence="10"/>
 
-    <!-- <record id="product_template_inherit_ext_search_form_view" model="ir.ui.view">
+    <record id="product_template_inherit_ext_search_form_view" model="ir.ui.view">
             <field name="name">product.template.inherit_ext.search.form</field>
             <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.template.search.stock.form"/>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='warehouse_id']" position="after">
-                    <field name="product_ref_ids" context="{'product_ref_ids': self}" filter_domain="[]"/>
+                <xpath expr="//field[@name='pricelist_id']" position="after">
+                    <field name="product_ref_ids" filter_domain="['|',('product_ref_ids', 'ilike', self),('name', 'ilike', self)]"/>
                 </xpath>
             </field>
-        </record> -->
+        </record>
 
 
 </odoo>
