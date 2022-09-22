@@ -88,7 +88,7 @@
             <field name="inherit_id" ref="product.product_template_search_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='pricelist_id']" position="after">
-                    <field name="product_ref_ids" filter_domain="['|',('product_ref_ids', 'ilike', self),('name', 'ilike', self)]"/>
+                    <field name="product_ref_ids" filter_domain="[('product_ref_ids', 'ilike', self)]"/>
                 </xpath>
             </field>
         </record>
