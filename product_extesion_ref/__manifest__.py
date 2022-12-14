@@ -10,12 +10,20 @@
         'stock',
         'sale',
         'product',
+        'website',
+        'website_sale',
     ],
     'data': [
         'security/ir.model.access.csv',
         'views/product_template_view.xml',
+        'views/templates.xml',
     ],
     # 'auto_install': True,
     'application': False,
     'installable': True,
-} 
+    'assets': {
+        'web.assets_frontend': [
+            'product_extesion_ref/static/src/js/website_sale.js',
+        ],
+    },
+}
