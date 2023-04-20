@@ -1,12 +1,38 @@
 # -*- coding: utf-8 -*-
+import base64
 import logging
+from io import BytesIO
+
+from barcode import Code39
+from barcode.writer import ImageWriter
 from odoo import api, models, fields, _
 
 _logger = logging.getLogger(__name__)
 
 
 class ProductTemplate(models.Model):
-    _inherit = 'product.template'
+    _inherit = 'product.template'        
+
+    def get_qr_link(self):
+        for rec in self:
+            qr = self.env['website'].search([('id','=',1)]).qr_link
+            return qr
+
+    def get_company_logo(self):
+        for rec in self:
+            logo = self.env['res.company'].search([('id','=',1)]).logo
+            return logo
+
+    def get_custom_label(self):
+        # get the report action back as we will need its data
+        report = self.env['ir.actions.report']._get_report_from_name('product_extesion_ref.report_custom_label_product')
+        # get the records selected for this rendering of the report
+      #  obj = self.env[report.model].browse(docids)
+        # return a custom rendering context
+        return {
+            'lines': docids.get_lines()
+        }
+#        return self.env.ref('product_extesion_ref.report_custom_label_product').report_Action(self)
 
     @api.depends('product_ref_ids')
     def compute_names_equivalence(self):

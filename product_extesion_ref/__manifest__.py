@@ -15,8 +15,11 @@
     ],
     'data': [
         'security/ir.model.access.csv',
+        'reports/custom_label_template.xml',
         'views/product_template_view.xml',
+        'views/website_view.xml',
         'views/templates.xml',
+        'wizards/product_label_layout_view.xml',
     ],
     # 'auto_install': True,
     'application': False,
