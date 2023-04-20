@@ -3,7 +3,7 @@ import base64
 import logging
 from io import BytesIO
 
-from barcode import Code39
+#from barcode import Code39
 from barcode.writer import ImageWriter
 from odoo import api, models, fields, _
 
