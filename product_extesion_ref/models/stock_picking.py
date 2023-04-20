@@ -3,8 +3,8 @@ import base64
 import logging
 import io
 
-from barcode import Code39
-from barcode.writer import ImageWriter
+#from barcode import Code39
+#from barcode.writer import ImageWriter
 from odoo import api, models, fields, _, tools
 from PIL import Image
 
