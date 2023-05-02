@@ -18,6 +18,10 @@ class CustomLabel(models.TransientModel):
             stock_picking = self.env['stock.picking'].browse(self.env.context.get('active_id'))
             if stock_picking:
                 vals['picking_id'] = stock_picking.id
+        elif self.env.context.get('active_model') == 'product.template':
+            product_template = self.env['product.template'].browse(self.env.context.get('active_id'))
+            if product_template:
+                vals['product_id'] = product_template.id
         return vals
 
 
@@ -28,6 +32,7 @@ class CustomLabel(models.TransientModel):
     ],string="Formato de etiqueta"
     )
     picking_id = fields.Many2one('stock.picking', string="Transferencia")
+    product_id = fields.Many2one('product.template', string="Producto")
 
     width = fields.Integer(string="Ancho")
     height = fields.Integer(string="Alto")
@@ -43,7 +48,7 @@ class CustomLabel(models.TransientModel):
 
     def get_height_px(self,height):
         if self.print_format == 'custom_label':
-            height_px = ((height * 118.1)/3)/2
+            height_px = ((height * 118.1)/3)/3
         elif self.print_format == '5x10':
             height_px = 33
         elif self.print_format == '8x3':
@@ -54,15 +59,26 @@ class CustomLabel(models.TransientModel):
 
     def action_confirm(self):
         for rec in self:
-            if rec.print_format == 'custom_label':
-                if rec.width <= 0 or rec.height <= 0:
-                    raise ValidationError("El Largo o Ancho debe ser mayor a 0, verifique sus valores")
-                else:
-                    return self.env.ref('product_extesion_ref.report_custom_label_picking_customizable').read()[0]
-            elif rec.print_format == '5x10':
-                return self.env.ref('product_extesion_ref.report_custom_label_picking_5x10cm').read()[0]
-            elif rec.print_format == '8x3':
-                return self.env.ref('product_extesion_ref.report_custom_label_picking_8x3cm').read()[0]
+            if rec.picking_id:
+                if rec.print_format == 'custom_label':
+                    if rec.width <= 0 or rec.height <= 0:
+                        raise ValidationError("El Largo o Ancho debe ser mayor a 0, verifique sus valores")
+                    else:
+                        return self.env.ref('product_extesion_ref.report_custom_label_picking_customizable').read()[0]
+                elif rec.print_format == '5x10':
+                    return self.env.ref('product_extesion_ref.report_custom_label_picking_5x10cm').read()[0]
+                elif rec.print_format == '8x3':
+                    return self.env.ref('product_extesion_ref.report_custom_label_picking_8x3cm').read()[0]
+            elif rec.product_id:
+                if rec.print_format == 'custom_label':
+                    if rec.width <= 0 or rec.height <= 0:
+                        raise ValidationError("El Largo o Ancho debe ser mayor a 0, verifique sus valores")
+                    else:
+                        return self.env.ref('product_extesion_ref.report_custom_label_product_customizable').read()[0]
+                elif rec.print_format == '5x10':
+                    return self.env.ref('product_extesion_ref.report_custom_label_product_5x10cm').read()[0]
+                elif rec.print_format == '8x3':
+                    return self.env.ref('product_extesion_ref.report_custom_label_product_8x3cm').read()[0]
             
                 
 

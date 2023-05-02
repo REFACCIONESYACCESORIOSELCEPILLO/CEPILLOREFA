@@ -20,7 +20,7 @@
     <record id="report_custom_label_picking_8x3cm" model="ir.actions.report">
       <field name="name">Etiqueta 8x3cm</field>
       <field name="model">product_extesion_ref.custom_label</field>
-      <field name="report_type">qweb-html</field>
+      <field name="report_type">qweb-pdf</field>
       <field name="report_name">product_extesion_ref.custom_label_layout_picking_8x3cm</field>
       <field name="report_file">product_extesion_ref.custom_label_layout_picking_8x3cm</field>
       <field name="print_report_name">'Etiqueta 8x3cm'</field>
@@ -44,7 +44,7 @@
                         </td>
                         <td class="col-xs-4" style="border:0;margin:0;padding:0;">
                           <center>
-                            <h3><span t-esc="line.reference" width="315px"/></h3>
+                            <h3><span t-esc="line.reference" style="text-align: center;font-size:24pt;"/></h3>
                           </center>
                         </td> 
                         <td class="col-xs-4" style="border:0;margin:0;padding:0;">
@@ -67,7 +67,7 @@
                       <center>
                         <td class="col-xs-4" style="border:0;margin:0;padding:0;"></td>
                           <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;">
-                            <span t-esc="line.product_id.product_tmpl_id.default_code" width="315px"/>
+                            <h1><span t-esc="line.product_id.product_tmpl_id.default_code" style="text-align: center;font-size:3em;"/></h1>
                           </td>
                         <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;"></td>
                       </center>
@@ -76,7 +76,7 @@
                         <center>
                           <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;"></td>
                           <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;">
-                            <span t-esc="line.product_id.product_tmpl_id.description[:30]" width="315px"/>
+                            <span t-esc="line.product_id.product_tmpl_id.name[:30]" width="315px"/>
                           </td>
                           <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;"></td>
                         </center>
@@ -92,7 +92,7 @@
     <record id="report_custom_label_picking_5x10cm" model="ir.actions.report">
       <field name="name">Etiqueta Personalizada 5x10cm</field>
       <field name="model">product_extesion_ref.custom_label</field>
-      <field name="report_type">qweb-html</field>
+      <field name="report_type">qweb-pdf</field>
       <field name="report_name">product_extesion_ref.custom_label_layout_picking_5x10cm</field>
       <field name="report_file">product_extesion_ref.custom_label_layout_picking_5x10cm</field>
       <field name="print_report_name">'Etiqueta 5x10'</field>
@@ -141,7 +141,7 @@
                       <center>
                         <td class="col-xs-4" style="border:0;margin:0;padding:0;"></td>
                           <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;">
-                            <span t-esc="line.product_id.product_tmpl_id.default_code" width="197px"/>
+                            <h1><span t-esc="line.product_id.product_tmpl_id.default_code" style="text-align: center;font-size:3em;"/></h1>
                           </td>
                         <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;"></td>
                       </center><br/>
@@ -150,7 +150,7 @@
                         <center>
                           <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;"></td>
                           <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;">
-                            <span t-esc="line.product_id.product_tmpl_id.description[:25]" width="197px"/>
+                            <h2><span t-esc="line.product_id.product_tmpl_id.name[:30]" style="text-align: center;"/></h2>
                           </td>
                           <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;"></td>
                         </center><br/>
@@ -166,7 +166,7 @@
     <record id="report_custom_label_picking_customizable" model="ir.actions.report">
       <field name="name">Etiqueta Personalizada Customizable</field>
       <field name="model">product_extesion_ref.custom_label</field>
-      <field name="report_type">qweb-html</field>
+      <field name="report_type">qweb-pdf</field>
       <field name="report_name">product_extesion_ref.custom_label_layout_picking_customizable</field>
       <field name="report_file">product_extesion_ref.custom_label_layout_picking_customizable</field>
       <field name="paperformat_id" ref="product_extesion_ref.paperformat_cepillo"/>
@@ -229,7 +229,7 @@
                       <!--<td style="border: 0; margin: 0; padding: 0;"></td>-->
                         <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;"></td>
                         <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;">
-                          <h2><span t-esc="line.product_id.product_tmpl_id.description[:30]" style="text-align: center;"/></h2>
+                          <h2><span t-esc="line.product_id.product_tmpl_id.name[:30]" style="text-align: center;"/></h2>
                         </td>
                         <td class="col-xs-4" style="border: 0; margin: 0; padding: 0;"></td>
                       </center>

@@ -8,7 +8,6 @@
       <field name="arch" type="xml">
         <xpath expr="//field[@name='domain']" position="after">
           <field name="qr_link" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
-          <field name="secret" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
         </xpath>
       </field>
     </record>

@@ -16,6 +16,8 @@
     'data': [
         'security/ir.model.access.csv',
         'reports/custom_label_template.xml',
+        'reports/custom_label_template_product.xml',
+        'views/sale_order_views.xml',
         'views/product_template_view.xml',
         'views/website_view.xml',
         'views/templates.xml',
