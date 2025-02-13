@@ -5,10 +5,8 @@
         <field name="model">product.template</field>
         <field name="arch" type="xml">
             <pivot string="Informe de productos">
-                <field name="name" type="row"/>
-                <!-- <field name="order_id" type="measure"/>
-                <field name="price_subtotal" type="measure"/>
-                <field name="price_total" type="measure"/> -->
+                <field name="name" type="row" />
+                <field name="sales_count" string="Vendidas" type="measure"/>
                 <field name="qty_available" string="A la mano" type="measure"/>
                 <field name="suc_manantial" type="measure"/>
                 <field name="suc_magon" type="measure"/>
@@ -23,10 +21,8 @@
             <field name="name">Informe de productos</field>
             <field name="res_model">product.template</field>
             <field name="view_mode">pivot</field>
-            <!-- <field name="search_view_id" ref="sale.view_order_product_search"/> -->
+            <field name="search_view_id" ref="sale.view_order_product_search"/>
             <field name="context" eval="{}"/>
-               <!--  'search_default_Sales': 1,
-                'search_default_filter_date': 1}"/> -->
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     No data yet!
@@ -40,7 +36,7 @@
         <field name="sequence" eval="2"/>
         <field name="view_mode">pivot</field>
         <field name="view_id" ref="module_1.sale_report_pivot_inherit_id"/>
-        <!-- <field name="act_window_id" ref="module_1.sale_report_action_dashboard"/> -->
+        <field name="act_window_id" ref="module_1.sale_report_action_dashboard"/>
     </record>
 
     <menuitem

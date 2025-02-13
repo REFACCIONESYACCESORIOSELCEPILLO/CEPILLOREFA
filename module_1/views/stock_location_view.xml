@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="////form/sheet/group" position="before">
                 <label for="branch"/>
-                <h2><field name="branch" options="{'no_create': True}"/></h2>
+                <h2><field name="branch" required="usage in ('internal')"/></h2>
             </xpath>
         </field>
     </record>

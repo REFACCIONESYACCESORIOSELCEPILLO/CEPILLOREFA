@@ -162,7 +162,7 @@
             <br>FECHA Y HORA DE CERTIFICACIÓN: </br>
             <br>CUALQUIER CAMBIO A ESTE CFDI DEBERÁ SOLICITARSE DENTRO DEL MES DE SU EMISIÓN</br>
         </div><BR/><BR/>
-        <t t-set="cfdi_vals" t-value="o._l10n_mx_edi_decode_cfdi()"/>
+        <t t-set="cfdi_vals" t-value="o._l10n_mx_edi_get_extra_invoice_report_values()"/>
         <t t-set="is_cfdi_signed" t-value="bool(o._get_l10n_mx_edi_signed_edi_document())"/>
         <t t-if="is_cfdi_signed">
                 <div class="row" id='complement'>

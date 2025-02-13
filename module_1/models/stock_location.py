@@ -14,6 +14,5 @@ class StockLocation(models.Model):
                    ('POZ', 'Poza Rica'),
                    ('PAP', 'Papantla'),
                    ('TUX', 'Tuxpan'),],
-        string=_('Sucursal'), required=True,
+        string='Sucursal',
     )
-
