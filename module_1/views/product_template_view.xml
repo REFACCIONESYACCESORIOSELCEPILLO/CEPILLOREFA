@@ -22,11 +22,11 @@
         <field name="inherit_id" ref="product.product_template_kanban_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_properties']" position="before">
-                <div t-if="record.suc_manantial.value &gt; '0.0'">Suc. Manantial: <field name="suc_manantial"/></div>
-                <div t-if="record.suc_magon.value &gt; '0.0'">Suc. Magon: <field name="suc_magon"/></div>
-                <div t-if="record.suc_poza_rica.value &gt; '0.0'">Suc. Poza Rica: <field name="suc_poza_rica"/></div>
-                <div t-if="record.suc_papantla.value &gt; '0.0'">Suc. Papantla: <field name="suc_papantla"/></div>
-                <div t-if="record.suc_tuxpan.value &gt; '0.0'">Suc. Tuxpan: <field name="suc_tuxpan"/></div>
+                <div t-if="record.suc_manantial.value &gt; 0">Suc. Manantial: <field name="suc_manantial"/></div>
+                <div t-if="record.suc_magon.value &gt; 0">Suc. Magon: <field name="suc_magon"/></div>
+                <div t-if="record.suc_poza_rica.value &gt; 0">Suc. Poza Rica: <field name="suc_poza_rica"/></div>
+                <div t-if="record.suc_papantla.value &gt; 0">Suc. Papantla: <field name="suc_papantla"/></div>
+                <div t-if="record.suc_tuxpan.value &gt; 0">Suc. Tuxpan: <field name="suc_tuxpan"/></div>
             </xpath>
         </field>
     </record>
