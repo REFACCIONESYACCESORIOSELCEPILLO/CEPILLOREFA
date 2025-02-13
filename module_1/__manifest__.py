@@ -14,7 +14,7 @@
         'l10n_mx_edi_extended',
     ],
     'data': [
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
         'views/stock_location_view.xml',
         'views/product_template_view.xml',
         'views/sale_report.xml',
