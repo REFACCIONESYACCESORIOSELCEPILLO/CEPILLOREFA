@@ -23,7 +23,7 @@
     'installable': True,
     'assets': {
         'web.assets_frontend': [
-            'product_extesion_ref/static/src/js/website_sale.js',
+            'product_extesion_ref/static/src/js/website_sale.js'
         ],
     },
 }

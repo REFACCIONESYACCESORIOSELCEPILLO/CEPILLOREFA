@@ -17,8 +17,6 @@ class ProductTemplate(models.Model):
             elif equi.equivalence_extra:
                 self.names_equivalence += equi.equivalence_extra + ' '
 
-        print("############### NAMES EQUIVALENCE >>>>>>>>>>>>>>>>>> ", self.names_equivalence)
-
     names_equivalence = fields.Char(string="Names", compute="compute_names_equivalence")
 
     product_ref_ids = fields.One2many('product.template.equivalence', 'product_id', string="Equivalencia")
@@ -61,6 +59,7 @@ class ProductTemplate(models.Model):
 
 class ProductTemplateEquivalence(models.Model):
     _name = 'product.template.equivalence'
+    _description = "Productos equivalentes"
 
     product_id = fields.Many2one('product.template', string="Producto")
     equivalence_id = fields.Many2one('product.template', string="Equivalencia")
@@ -78,6 +77,7 @@ class ProductTemplateEquivalence(models.Model):
 
 class ProductCategCar(models.Model):
     _name = 'product.categ.car'
+    _description = "Categoria de Carros"
 
     name = fields.Char(string="Nombre")
     modelo = fields.Char(string="Modelo")
