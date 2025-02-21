@@ -11,7 +11,7 @@ class ProductTemplate(models.Model):
     @api.depends('qty_available')
     def _get_location_products(self):
         for rec in self:
-            rec.ensure_one()
+            # rec.ensure_one()
             quant_ids = self.env['stock.quant'].search([('product_id.name','=',rec.name)])
             if not quant_ids:
                 rec.suc_manantial = 0
@@ -33,7 +33,6 @@ class ProductTemplate(models.Model):
                 else:
                     rec.suc_poza_rica = rec.suc_poza_rica
                 if quant.location_id.branch == 'PAP' and quant.product_id.default_code == rec.default_code:
-                    print("#################### QUANt >>>>>>>>>>>>>>>>>>>>> ", quant)
                     rec.suc_papantla = quant.quantity
                 else:
                     rec.suc_papantla = rec.suc_papantla
@@ -41,14 +40,6 @@ class ProductTemplate(models.Model):
                     rec.suc_tuxpan = quant.quantity
                 else:
                     rec.suc_tuxpan = rec.suc_tuxpan
-
-    @api.depends('sales_count')
-    def _get_team_ids(self):
-        team_id = False
-        for team in self.env['sale.report'].search([('product_id.id','=',self.id)]):
-            team_id += team.team_id
-        self.team_id = team_id
-
 
     suc_manantial = fields.Float(string="Suc. Manantial", compute=_get_location_products, default=0, store=True)
     suc_magon = fields.Float(string="Suc. Magon", compute=_get_location_products, default=0, store=True)
@@ -58,6 +49,6 @@ class ProductTemplate(models.Model):
 
     sales_count = fields.Float(store=True)
     qty_available = fields.Float(store=True)
-
-    team_id = fields.Many2many('crm.team', string="Equipo de ventas", compute=_get_team_ids)
-
+    virtual_available = fields.Float(store=True)
+    incoming_qty = fields.Float(store=True)
+    outgoing_qty = fields.Float(store=True)

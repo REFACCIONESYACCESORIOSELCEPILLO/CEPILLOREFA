@@ -15,20 +15,15 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'reports/custom_label_template.xml',
-        'reports/custom_label_template_product.xml',
-        'views/sale_order_views.xml',
         'views/product_template_view.xml',
-        'views/website_view.xml',
         'views/templates.xml',
-        'wizards/product_label_layout_view.xml',
     ],
     # 'auto_install': True,
     'application': False,
     'installable': True,
     'assets': {
         'web.assets_frontend': [
-            'product_extesion_ref/static/src/js/website_sale.js',
+            'product_extesion_ref/static/src/js/website_sale.js'
         ],
     },
 }
