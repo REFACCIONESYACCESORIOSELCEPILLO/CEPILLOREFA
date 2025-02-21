@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': 'Extención de productos y relación',
     'version': '1.0',
