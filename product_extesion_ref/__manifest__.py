@@ -18,7 +18,6 @@
         'views/product_template_view.xml',
         'views/templates.xml',
     ],
-    # 'auto_install': True,
     'application': False,
     'installable': True,
     'assets': {
