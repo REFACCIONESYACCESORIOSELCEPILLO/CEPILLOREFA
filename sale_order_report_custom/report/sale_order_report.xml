@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_template_sale_order_linec">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Almacén: 
+                                    <t t-if="o.warehouse_ids">
+                                        <span  t-esc="','.join(o.warehouse_ids.mapped('name'))"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span>Todos</span>
+                                    </t>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p>Desde Fecha: <t t-esc="o.date_from"/></p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Hasta Fecha: <t t-if="o.date_to" t-esc="o.date_to"/></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <table class="w-100 table table-dark table-hover">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th class="p-2">Producto</th>
+                                            <th>Descripción</th>
+                                            <th>Cantidad</th>
+                                            <th>Costo total</th>
+                                            <th>Precio total</th>
+                                            <th>Utilidad</th>
+                                            <th>% Utilidad</th>
+                                            <th>Margen</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="cost" t-value="0"/>
+                                        <t t-set="price" t-value="0"/>
+                                        <tr t-foreach="o.sale_order_line_ids" t-as="line">
+                                            <t t-set="cost" t-value="line.product_template_id.standard_price * line.product_uom_qty"/>
+                                            <t t-set="price" t-value="line.price_total"/>
+                                            <td class="p-2"><t t-esc="line.product_template_id.barcode"/></td>
+                                            <td><t t-esc="line.name"/></td>
+                                            <td><t t-esc="line.product_uom_qty"/></td>
+                                            <td><t t-esc="cost" t-options='{"widget": "float", "precision": 2}'/></td>
+                                            <td><t t-esc="price" t-options='{"widget": "float", "precision": 2}'/></td>
+                                            <td><t t-esc="price-cost" t-options='{"widget": "float", "precision": 2}'/></td>
+                                            <td><t t-esc="round((price-cost)*100/(cost or 1),2)" t-options='{"widget": "float", "precision": 2}'/></td>
+                                            <td><t t-esc="((price-cost)/(price or 1))*100" t-options='{"widget": "float", "precision": 6}'/></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_wizard_sorder_report" model="ir.actions.report">
+        <field name="name">Reporte Sale Order</field>
+        <field name="model">wizard.sorder.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sale_order_report_custom.report_template_sale_order_linec</field>
+        <field name="report_file">sale_order_report_custom.report_template_sale_order_linec</field>
+        <field name="print_report_name">'Ventas y Utilidad'</field>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>
