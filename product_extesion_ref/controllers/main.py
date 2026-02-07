@@ -69,15 +69,11 @@ _logger = logging.getLogger(__name__)
 # Overrides WebsiteSale from website_sale module
 class Website(WebsiteSale):
 
-    # def _get_search_options(
-    #         self, category=None, attrib_values=None, pricelist=None, min_price=0.0, max_price=0.0, conversion_rate=1,
-    #         **post
-    # ):
     def _get_search_options(
-        self, category=None, attrib_values=None, tags=None, min_price=0.0, max_price=0.0,
-        conversion_rate=1, **post
+            self, category=None, attrib_values=None, pricelist=None, min_price=0.0, max_price=0.0, conversion_rate=1,
+            **post
     ):
-        res = super()._get_search_options(category, attrib_values, tags, min_price, max_price, conversion_rate,
+        res = super()._get_search_options(category, attrib_values, pricelist, min_price, max_price, conversion_rate,
                                           **post)
         res.update({'search_brand': post.get('search_brand'), 'search_year': post.get('search_year'),
                     'search_model': post.get('search_model'), 'search_piece': post.get('search_piece')})

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 {
     'name': 'Extención de productos y relación',
     'version': '1.0',
@@ -17,6 +18,7 @@
         'views/product_template_view.xml',
         'views/templates.xml',
     ],
+    # 'auto_install': True,
     'application': False,
     'installable': True,
     'assets': {
