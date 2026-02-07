@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List View -->
+    <record id="sh_motorcycle_brand_tree" model="ir.ui.view">
+        <field name="name">motorcycle.brand.list</field>
+        <field name="model">motorcycle.brand</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="website_id" groups="website.group_multi_website"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!-- <record id="sh_motorcycle_brand_form" model="ir.ui.view">
+        <field name="name">motorcycle.brand.form</field>
+        <field name="model">motorcycle.brand</field>
+        <field name="arch" type="xml">
+            <form string="Auto Parts brand">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="sequence" widget="handle" invisible="1" />
+                            <field name="name" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record> -->
+
+
+    <!-- action -->
+    <record id="sh_motorcycle_brand_action" model="ir.actions.act_window">
+        <field name="name">Brand</field>
+        <field name="res_model">motorcycle.brand</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- make menuitem -->
+    <menuitem id="sh_motorcycle_brand_menuitem" action="sh_motorcycle_brand_action" parent="sh_motorcycle_menuitem_config" sequence="8" />
+    <menuitem id="sh_motorcycle_country_menuitem" action="base.action_country" parent="sh_motorcycle_menuitem_config" sequence="9" />
+</odoo>
