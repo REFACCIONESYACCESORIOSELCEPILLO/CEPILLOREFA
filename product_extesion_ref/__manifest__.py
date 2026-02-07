@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Extención de productos y relación',
-    'version': '1.0',
+    'version': '18.0.1.0.0,
     'description': '',
     'author': 'Gabriel Lopez',
     'license': 'LGPL-3',
