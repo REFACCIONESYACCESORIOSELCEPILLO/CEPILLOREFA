@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="jm_view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="header" position="inside">
+                <field name="blocked_order" invisible="1"/>
+                <button name="action_unlock_order" type="object" string="Unlock"
+                        invisible="not blocked_order" groups="sale_restring.group_sale_locked"/>
+            </xpath>
+            <field name="partner_id" position="attributes">
+                <attribute name="readonly" add="blocked_order" separator=" or "/>
+            </field>
+            <field name="partner_invoice_id" position="attributes">
+                <attribute name="readonly" add="blocked_order" separator=" or "/>
+            </field>
+            <field name="partner_shipping_id" position="attributes">
+                <attribute name="readonly" add="blocked_order" separator=" or "/>
+            </field>
+            <field name="validity_date" position="attributes">
+                <attribute name="readonly" add="blocked_order" separator=" or "/>
+            </field>
+            <field name="date_order" position="attributes">
+                <attribute name="readonly" add="blocked_order" separator=" or "/>
+            </field>
+            <field name="pricelist_id" position="attributes">
+                <attribute name="readonly" add="blocked_order" separator=" or "/>
+            </field>
+            <field name="payment_term_id" position="attributes">
+                <attribute name="readonly">blocked_order</attribute>
+            </field>
+            <field name="order_line" position="attributes">
+                <attribute name="readonly" add="blocked_order" separator=" or "/>
+            </field>
+
+            <field name="user_id" position="attributes">
+                <attribute name="readonly">blocked_order</attribute>
+            </field>
+            <field name="team_id" position="attributes">
+                <attribute name="readonly">blocked_order</attribute>
+            </field>
+            <field name="require_signature" position="attributes">
+                <attribute name="readonly" add="blocked_order" separator=" or "/>
+            </field>
+            <field name="prepayment_percent" position="attributes">
+                <attribute name="readonly" add="blocked_order" separator=" or "/>
+            </field>
+            <field name="commitment_date" position="attributes">
+                <attribute name="readonly" add="blocked_order" separator=" or "/>
+            </field>
+        </field>
+    </record>
+</odoo>
