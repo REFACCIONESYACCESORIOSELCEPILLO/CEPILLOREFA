@@ -10,17 +10,17 @@ class SaleReport(models.Model):
     suc_papantla = fields.Float(readonly=True)
     suc_tuxpan = fields.Float(readonly=True)
 
-    # ---------------- SALE ----------------
+    def _select_additional_fields(self):
+        res = super()._select_additional_fields()
 
-    def _select_sale(self):
-        res = super()._select_sale()
-        res += """
-            ,CASE WHEN sl.branch = 'MAN' THEN 1 ELSE 0 END AS suc_manantial
-            ,CASE WHEN sl.branch = 'MAG' THEN 1 ELSE 0 END AS suc_magon
-            ,CASE WHEN sl.branch = 'POZ' THEN 1 ELSE 0 END AS suc_poza_rica
-            ,CASE WHEN sl.branch = 'PAP' THEN 1 ELSE 0 END AS suc_papantla
-            ,CASE WHEN sl.branch = 'TUX' THEN 1 ELSE 0 END AS suc_tuxpan
-        """
+        res.update({
+            'suc_manantial': "CASE WHEN sl.branch = 'MAN' THEN 1 ELSE 0 END",
+            'suc_magon': "CASE WHEN sl.branch = 'MAG' THEN 1 ELSE 0 END",
+            'suc_poza_rica': "CASE WHEN sl.branch = 'POZ' THEN 1 ELSE 0 END",
+            'suc_papantla': "CASE WHEN sl.branch = 'PAP' THEN 1 ELSE 0 END",
+            'suc_tuxpan': "CASE WHEN sl.branch = 'TUX' THEN 1 ELSE 0 END",
+        })
+
         return res
 
     def _from_sale(self):
@@ -34,17 +34,4 @@ class SaleReport(models.Model):
     def _group_by_sale(self):
         res = super()._group_by_sale()
         res += ", sl.branch"
-        return res
-
-    # ---------------- POS (EL QUE TU BUILD USA) ----------------
-
-    def _select_pos(self):
-        res = super()._select_pos()
-        res += """
-            ,0 AS suc_manantial
-            ,0 AS suc_magon
-            ,0 AS suc_poza_rica
-            ,0 AS suc_papantla
-            ,0 AS suc_tuxpan
-        """
         return res
