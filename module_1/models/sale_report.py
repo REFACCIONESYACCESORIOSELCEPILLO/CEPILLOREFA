@@ -4,11 +4,11 @@ from odoo import models, fields
 class SaleReport(models.Model):
     _inherit = "sale.report"
 
-    suc_manantial = fields.Float(string="Suc. Manantial", readonly=True)
-    suc_magon = fields.Float(string="Suc. Magon", readonly=True)
-    suc_poza_rica = fields.Float(string="Suc. Poza Rica", readonly=True)
-    suc_papantla = fields.Float(string="Suc. Papantla", readonly=True)
-    suc_tuxpan = fields.Float(string="Suc. Tuxpan", readonly=True)
+    suc_manantial = fields.Float(readonly=True)
+    suc_magon = fields.Float(readonly=True)
+    suc_poza_rica = fields.Float(readonly=True)
+    suc_papantla = fields.Float(readonly=True)
+    suc_tuxpan = fields.Float(readonly=True)
 
     # ---------------- SALE ----------------
 
@@ -36,10 +36,10 @@ class SaleReport(models.Model):
         res += ", sl.branch"
         return res
 
-    # ---------------- POS (IMPORTANTE PARA EL UNION) ----------------
+    # ---------------- POS (EL QUE TU BUILD USA) ----------------
 
-    def _select_pos_sale(self):
-        res = super()._select_pos_sale()
+    def _select_pos(self):
+        res = super()._select_pos()
         res += """
             ,0 AS suc_manantial
             ,0 AS suc_magon
